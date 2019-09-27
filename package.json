@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bootstrap": "^4.3.1",
+    "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.2"
@@ -12,18 +14,17 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint '**/*.{js,jsx}' --quiet"
+    "lint": "eslint '**/*.{js,jsx}' --fix-dry-run"
   },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
   },
-    "lint-staged": {
-      "*.{js,scss,css}": [
-        "prettier --write",
-        "git add"
-      ]
+  "lint-staged": {
+    "*.{js,scss,css}": [
+      "git add"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -46,6 +47,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "husky": "^3.0.5",
-    "lint-staged": "^9.4.0"
+    "lint-staged": "^9.4.0",
+    "node-sass": "^4.12.0"
   }
 }
