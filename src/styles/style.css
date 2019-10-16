@@ -41,5 +41,27 @@ h2 {
 .icon {
   width: 1.3%;
   margin: 0 5px 3px 0;
-  color:white
+  color:white;
+}
+
+.card {
+  min-height: 170px;
+}
+
+.card-title {
+  color: #23262b;
+  font-size: 1rem;
+}
+
+.card-link {
+  color: #f33d3d
+}
+
+.card-subtitle {
+  font-size: 0.85rem;
+}
+
+.link-reference {
+  margin-left: 3px;
+  color: #3399cc;
 }

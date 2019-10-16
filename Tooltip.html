@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    body {
+      background-color: #161725;
+      color: white;
+    }
+
+    .main {
+      padding: 20rem;
+    }
+
+    .content {
+      margin: 0 auto;
+      width: 40%;
+      text-align: center;
+    }
+
+    .tool {
+      cursor: pointer;
+      display:inline-block;
+      position: relative;
+    }
+
+    .tooltip{
+      display: none;
+      margin:8px;
+      padding:8px;
+      border:1px solid blue;
+      background-color:white;
+      color:black;
+      position: absolute;
+      z-index: 2;
+    }
+
+  </style>
+  <title>Tool Tip</title>
+</head>
+<body>
+  <div class="main">
+    <div class="content">
+      <div id="tool">Tooltip</div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function(){
+      $.fn.extend({
+        showToolTip: function(details) {
+          $(`<div class="tooltip">
+            ${details.Title}
+            ${details.Content}
+            <button id="approve" type="button">click</button></div>`)
+            .appendTo('body');
+
+          
+          }
+      });
+
+      console.log($('#tool'))
+
+      const positionToolTip = function(event) {
+        const tooltipX = event.pageX - 8;
+        const tooltipY = event.pageY - 50;
+        $('div.tooltip').css({top: tooltipY, left: tooltipX});
+      };
+
+      const displayTooltip = function(event) {
+        positionToolTip(event);
+        $('div.tooltip').css('display', 'block');
+      }
+
+      const hideTooltip = function(event) {
+        // $('div.tooltip').css('display', 'none');
+      }
+
+      $('#tool').showToolTip ({
+          Title: 'This is the title',
+          Content: 'This is the content',
+          onApprove: function() {
+            console.log('clicked');
+            $('div.tooltip').css('display', 'none');
+          }
+      });
+
+      $("#tool").bind({
+        mouseenter : displayTooltip,
+        mouseleave: hideTooltip
+      });
+
+      $(document).on("click", "#approve", function() {
+        console.log($(this).attr('data-details'));
+      })
+    });
+  </script>
+</body>
+</html>

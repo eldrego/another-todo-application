@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const TodoForm = ({ value, addTodo, handleChange }) => {
   return (
-    <div>
+    <>
       <div className="row">
         <div className="col-md-12">
           <h2>Add a New Todo</h2>
@@ -21,7 +21,7 @@ const TodoForm = ({ value, addTodo, handleChange }) => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
