@@ -25,7 +25,11 @@ const Todo = ({ todo, completeTodo, removeTodo }) => {
 };
 
 Todo.propTypes = {
-  todo: PropTypes.shape.isRequired,
+  todo: PropTypes.shape({
+    text: PropTypes.string,
+    isCompleted: PropTypes.bool,
+    id: PropTypes.number,
+  }).isRequired,
   completeTodo: PropTypes.func.isRequired,
   removeTodo: PropTypes.func.isRequired
 };
